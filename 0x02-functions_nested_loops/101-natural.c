@@ -1,5 +1,5 @@
 #include "main.h"
-
+#include <stdio.h>
 /**
  * main - prints all mulitiples of 3 or 5 up to 1024
  * Return: Always (Success)
