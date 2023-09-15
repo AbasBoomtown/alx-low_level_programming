@@ -2,8 +2,8 @@
 
 /**
  * mul - Multiples of two integers
- * @x - The first number to multiply
- * @y - The second number to multiply with first number
+ * @x: The first number to multiply
+ * @y: The second number to multiply with first number
  * Return: The result of multiplication between x para and y para
  */
 
