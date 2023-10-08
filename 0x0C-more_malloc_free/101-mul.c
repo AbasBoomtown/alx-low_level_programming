@@ -50,7 +50,7 @@ void errors(void)
 }
 
 /**
- * _mul - program multiplies two positive numbers
+ * main - program multiplies two positive numbers
  * @argc: number of arguments
  * @argv: array of arguments
  *
