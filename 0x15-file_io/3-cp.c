@@ -5,13 +5,14 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-void check_10_stat(int stat, int fd, char *filename, char mode);
+void check_IO_stat(int stat, int fd, char *filename, char mode);
 /**
  * error_file - program that copies the content of a file to another file
  * @argv: arguments passed
  * @argc: The arguement count
  * Return: 1 on success, exit otherwise
  */
+
 int main(int argc, char *argv[])
 {
 	int src, dest, n_read = 1024, wrote, close_src, close_dest;
@@ -28,7 +29,7 @@ int main(int argc, char *argv[])
 	check_IO_stat(src, -1, argv[1], 'O');
 	dest = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, mode);
 	check_IO_stat(dest, -1, argv[2], 'W');
-	while (nchars == 1024)
+	while (n_read == 1024)
 	{
 		n_read = read(src, buffer, sizeof(buffer));
 		if (n_read == -1)
@@ -38,11 +39,11 @@ int main(int argc, char *argv[])
 			check_IO_stat(-1, -1, argv[2], 'W');
 	}
 	close_src = close(src);
-	check_IO_stat(close_src, src, NULL,'C');
+	check_IO_stat(close_src, src, NULL, 'C');
 	close_dest = close(dest);
 	check_IO_stat(close_dest, dest, NULL, 'C');
 	return (0);
-
+}
 	/**
 	 * check_IO_stat - function checks if file can open or closed
 	 * @stat: description of file to be opened
@@ -51,8 +52,8 @@ int main(int argc, char *argv[])
 	 * @fd: file description
 	 * Return: void
 	 */
-	void chech_IO_stat(int stat, int fd, char *filename, char mode)
-
+	void check_IO_stat(int stat, int fd, char *filename, char mode)
+{
 	if (mode == 'C' && stat == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
@@ -68,6 +69,6 @@ int main(int argc, char *argv[])
 	{
 
 		dprintf(STDERR_FILENO, "Error: Can't write to  %s\n", filename);
-                exit(99);
+		exit(99);
 	}
 }
